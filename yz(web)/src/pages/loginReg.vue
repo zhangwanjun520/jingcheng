@@ -82,7 +82,30 @@
           </div>
           <!-- 登录 -->
           <div class="con" v-show="cur==1">
+<!-- ======================================修改 -->
+
+            <div v-if="current==0">
+                  <div id="inp">
+              <el-input v-model="phoneNumber" placeholder="请输入手机号码" style="position:relative"></el-input>
+              <div class="mistakeCon" style="position:absolute;top:67px">{{mistakePhone}}</div>
+            </div>
             <div id="inp">
+              <el-input v-model="tryCode" placeholder="请输入验证码" style="position:relative">
+                <span
+                  slot="suffix"
+                  class="getTryCode"
+                  @click="getTryCode3"
+                  v-show="show"
+                  style="cursor:pointer"
+                >获取验证码</span>
+                <span slot="suffix" class="getTryCode" v-show="!show">{{count}}s后再次获取</span>
+              </el-input>
+              <div class="mistakeCon" style="position:absolute;top:132px">{{judgeTryCode}}</div>
+            </div>
+
+            </div>
+            <div v-if="current==1">
+                      <div id="inp">
               <el-input v-model="pn" placeholder="请输入手机号码"></el-input>
             </div>
             <div id="inp">
@@ -98,6 +121,23 @@
             <div class="forget">
               <span @click="forgrtPw">忘记密码？</span>
             </div>
+
+            </div>
+
+            <div class="tab2">
+              <span  @click="current=0"
+            :style="{'color':(current==0?'#6A2F73':''),'border':(current==0?'1px solid #6A2F73':'')}">手机验证码登录</span>
+              <span  @click="current=1"
+            :style="{'color':(current==1?'#6A2F73':''),'border':(current==1?'1px solid #6A2F73':'')}">密码登录</span>
+
+            </div>
+
+
+<!-- ========================================== -->
+
+
+
+
             <!-- 忘记密码内容 -->
             <div class="forgetPwCon" v-if="appear==0">
               <div class="content">
@@ -218,6 +258,7 @@ export default {
       }
     };
     return {
+      current:0,
       appear: 1,
       cur: 0,
       // 注册表单信息
@@ -387,6 +428,53 @@ export default {
         }, 1000);
       }
     },
+
+        // 手机验证码登录=======================================修改
+ getTryCode3() {
+      const TIME_COUNT = 60;
+      if (!this.timer) {
+        this.count = TIME_COUNT;
+        this.show = false;
+        // 调用获取验证码得接口
+        let info = {
+          phone: this.phoneNumber,
+        };
+        getCode(qs.stringify(info)).then((res) => {
+          // console.log(res);
+          if (res.code == 0) {
+            this.$message({
+              type: "seccess",
+              showClose: true,
+              message: res.msg,
+              type: "success",
+              customClass: "mess",
+              offset: 200,
+            });
+          } else {
+            this.$message({
+              showClose: true,
+              message: res.msg,
+
+              customClass: "mess",
+              offset: 200,
+            });
+          }
+        });
+        //  点击之后进入倒计时
+        this.timer = setInterval(() => {
+          if (this.count > 0 && this.count <= TIME_COUNT) {
+            this.count--;
+          } else {
+            this.show = true;
+            clearInterval(this.timer);
+            this.timer = null;
+          }
+        }, 1000);
+      }
+    },
+
+
+
     // 注册表单信息提交，确保表单里的所有都是正确的才可以提交后台
     Reg() {
       if (
@@ -412,6 +500,7 @@ export default {
               type: "success",
               customClass: "mess",
               offset: 200,
+
             });
             setTimeout(() => {
               this.$router.push("/info");
@@ -422,6 +511,7 @@ export default {
               offset: 200,
               showClose: true,
             });
+
           }
         });
       } else {
@@ -694,6 +784,25 @@ export default {
   line-height: 40px;
   color: white;
   text-align: center;
+}
+.tab2{
+     width: 350px;
+      height: 60px;
+
+margin-left: 50px;
+      font-size: 15px;
+      text-align: center;
+      line-height: 50px;
+      color: #666666;
+      margin-top: 20px;
+      span{
+        display: inline-block;
+        // width: 50%;
+        border: 1px solid #dddddd;
+        text-align: center;
+        width: 170px;
+      }
+
 }
 </style>
 <style lang="scss">

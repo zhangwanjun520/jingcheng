@@ -225,7 +225,7 @@
           <div class="cont3">
             <p>文化水平</p>
             <p>
-              <el-select v-model="value5" placeholder="请选择">
+              <el-select v-model="value5" placeholder="请选择" >
                 <el-option v-for="item in education" :key="item.id" :value="item"></el-option>
               </el-select>
               <span class="star">*</span>
@@ -324,7 +324,7 @@
                     v-for="(item,idx) in marrige"
                     :key="item.id"
                     :value="item"
-                    @click.native="cur=idx"
+                    @click.native=" changeMarriageStatus(item,idx)"
                   ></el-option>
                 </el-select>
               </p>
@@ -451,13 +451,7 @@
               <!-- <p>详细地址</p> -->
               <p id="parents">
                 <span>年龄:</span>
-                <el-input
-                  type="text"
-                  placeholder="年龄"
-                  v-model="mAge"
-                  label="有几次婚姻"
-                  style="width:100px"
-                ></el-input>
+                <el-input type="text" placeholder="年龄" v-model="mAge" style="width:100px"></el-input>
               </p>
             </div>
             <div class="cont1">
@@ -831,6 +825,43 @@ export default {
     };
   },
   methods: {
+    //  marrigeValue: "",
+    // marrigeTime: "",
+    // marrigeNum: "",
+    // remarriedTime: "",
+    // divorceTime: "",
+    // dieLoveTime: "",
+    changeMarriageStatus(ite, index) {
+      this.cur = index;
+           this.marrigeTime == '';
+        this.remarriedTime == '';
+        this.divorceTime == '';
+        this.dieLoveTime == '';
+      // if (index == 0) {
+      //   this.remarriedTime == null;
+      //   this.divorceTime == null;
+      //   this.dieLoveTime == null;
+      // } else if (index == 1) {
+      //   this.marrigeTime == null;
+      //   this.remarriedTime == null;
+      //   this.divorceTime == null;
+      //   this.dieLoveTime == null;
+      // } else if (index == 2) {
+      //   this.marrigeTime == null;
+      //   this.dieLoveTime == null;
+      // } else if (index == 3) {
+      //   this.marrigeTime == null;
+      //   this.remarriedTime == null;
+      //   this.divorceTime == null;
+      // } else if (index == 4) {
+      //   this.marrigeTime == null;
+      //   this.divorceTime == null;
+      // } else if (index == 5) {
+      //   this.marrigeTime == null;
+      //   this.remarriedTime == null;
+      //   this.dieLoveTime == null;
+      // }
+    },
     llll(ind) {
       // console.log(ind)
       this.showNation = ind;

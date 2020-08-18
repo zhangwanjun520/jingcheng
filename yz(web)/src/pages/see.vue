@@ -1,6 +1,5 @@
 <template>
   <div class="box">
-
     <div class="formHead">
       <span
         :style="{'color':(cur==0?'#6a2b73':''),'border-bottom':(cur==0?'3px solid #6a2b73':'')}"
@@ -374,8 +373,7 @@
       </div>
     </div>
 
-
-<!-- ===============================================================================已提交过的申请表 -->
+    <!-- ===============================================================================已提交过的申请表 -->
     <div class="biao2" v-if="cur==1">
       <div v-if="content2.length==0" class="noData">暂无申请表信息</div>
 
@@ -383,7 +381,7 @@
         <p class="title">申请表{{index+1}}</p>
         <div class="con1">
           <div class="tit">
-         <div style="float:left;margin-left:0px">
+            <div style="float:left;margin-left:0px">
               <div>基本信息</div>
               <div style="font-weight:normal">INFORMATION</div>
             </div>
@@ -744,7 +742,7 @@
   </div>
 </template>
 <script>
-import { search, searchDetail,submitLastInfo } from "../api/request";
+import { search, searchDetail, submitLastInfo } from "../api/request";
 import qs from "qs";
 import Cookies from "js-cookie";
 export default {
@@ -785,17 +783,16 @@ export default {
     };
   },
   methods: {
-    search1(){
-          this.info = JSON.parse(localStorage.getItem("userInfo"));
-    let info2 = {
-      applicantBasicPhone: this.info.phone,
-      status: 4,
-    };
-    // 待提交
-    search(qs.stringify(info2)).then((res) => {
-      this.content = res.rows;
-    });
-
+    search1() {
+      this.info = JSON.parse(localStorage.getItem("userInfo"));
+      let info2 = {
+        applicantBasicPhone: this.info.phone,
+        status: 4,
+      };
+      // 待提交
+      search(qs.stringify(info2)).then((res) => {
+        this.content = res.rows;
+      });
     },
     goEdit(id) {
       this.$router.push({
@@ -818,25 +815,24 @@ export default {
       });
     },
     // 最后点击完成按钮提交最后得表单信息，提交到已完成里
-    lastSubmitForm(id){
+    lastSubmitForm(id) {
       submitLastInfo(id).then((res) => {
         if (res.code == 0) {
           // localStorage.setItem("info", JSON.stringify(info));
           this.$message({
             showClose: true,
-            message: '提交成功',
+            message: "提交成功",
             type: "success",
             customClass: "mess",
             offset: 200,
           });
-this.search1()
+          this.search1();
         }
       });
-
-    }
+    },
   },
   created() {
-this.search1()
+    this.search1();
   },
 };
 </script>

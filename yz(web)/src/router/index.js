@@ -42,7 +42,7 @@ const routes = [
   {
     // 兜底路由，匹配不到的路由跳转到首页
     path: '*',
-    redirect: '/login',
+    redirect: '/info',
 }
 
 

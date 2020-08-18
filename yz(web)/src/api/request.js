@@ -1,6 +1,6 @@
 // 和推荐相关的接口处理
 import axios from '../utils/axios.js'
-let base = 'http://192.168.40.120:8081/api'
+let base = 'http://192.168.40.136:10010/api'
 // let base='http://localhost:8081/api'
 
 //注册

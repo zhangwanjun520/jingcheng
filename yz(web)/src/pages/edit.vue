@@ -57,7 +57,7 @@
             </p>
           </div>
           <!-- 双重国籍 -->
-          <div class="cont3" v-if="showNation==0">
+          <div class="cont3" v-if="showNation==0||value3=='是'">
             <p>国籍</p>
             <p>
               <el-input type="text" placeholder="请填写第二个国籍" v-model="secondNation"></el-input>
@@ -324,7 +324,7 @@
                     v-for="(item,idx) in marrige"
                     :key="item.id"
                     :value="item"
-                    @click.native="cur=idx"
+                    @click.native="changeMarriageStatus(item,idx)"
                   ></el-option>
                 </el-select>
               </p>
@@ -833,6 +833,17 @@ export default {
     };
   },
   methods: {
+        changeMarriageStatus(ite, index) {
+            this.cur = index;
+            this.marrigeTime = '';
+        this.remarriedTime = '';
+        this.divorceTime ='';
+        this.dieLoveTime = '';
+      // console.log( this.marrigeTime ,
+      //   this.remarriedTime ,
+      //   this.divorceTime ,
+      //   this.dieLoveTime )
+    },
     llll(ind) {
       console.log(ind);
       this.showNation = ind;
@@ -865,9 +876,7 @@ export default {
       });
     },
     editinfo() {
-
-
-           if (
+      if (
         this.applicantName == "" ||
         this.value == "" ||
         this.value2 == "" ||
@@ -898,105 +907,105 @@ export default {
           offset: 200,
         });
       } else {
-          let info = {
-        applicantId: this.$route.query.formId,
-        // 基本情况
-        applicantBasicName: this.applicantName,
-        applicantBasicSex:
-          this.value == "男" ? "0" : this.value == "女" ? "1" : "",
-        applicantBasicNationality: this.value2,
-        applicantBasicIsdualnationality:
-          this.value3 == "是" ? "0" : this.value3 == "否" ? "1" : "",
-        applicantBasicIdtype: this.certificateType
-          .map((sitem) => sitem)
-          .indexOf(this.value4),
-        // 是否为双重国籍
-        applicantBasicNationality2: this.secondNation,
-        applicantBasicIdnumber: this.certificateNumber,
-        // 户籍所在
-        applicantBasicPermanentprovince: this.provinceValue,
-        applicantBasicPermanentcity: this.cityValue,
-        applicantBasicPermanentcounty: this.RegionValue,
-        applicantBasicPermanentaddress: this.detailAdress,
-        //  现住址
-        applicantBasicCurrentprovince: this.provinceValue2,
-        applicantBasicCurrentcity: this.cityValue2,
-        applicantBasicCurrentcounty: this.RegionValue2,
-        applicantBasicCurrentaddress: this.detailAdress2,
-        applicantBasicCulturallevel: this.education
-          .map((sitem) => sitem)
-          .indexOf(this.value5),
-        applicantBasicPhone: this.phoneNumber,
-        applicantBasicEmail: this.email,
-        applicantBasicUnit: this.work,
-        // 身体状况
-        applicantPhysicalIssober: this.radio,
-        applicantPhysicalIsbraindiseases: this.radio3,
-        applicantPhysicalBraindiseasesexplain: this.disease,
-        applicantPhysicalIsalonenotarialoffice: this.radio2,
-        applicantPhysicalIsaloneaccept3hvideo: this.radio4,
-        applicantPhysicalReadorwrite: this.radio5,
-        // 目前婚姻状况
-        applicantMaritalStatus: this.marrige
-          .map((sitem) => sitem)
-          .indexOf(this.marrigeValue),
-        applicantMaritalNumber: this.marrigeNum,
-        applicantMaritalMarrytime: this.marrigeTime,
-        applicantMaritalRemarrytime: this.remarriedTime,
-        applicantMaritalWidowedtime: this.dieLoveTime,
-        applicantMaritalDivorcetime: this.divorceTime,
-        //  父母状况
-        // 1.父亲
-        applicantFatherName: this.fName,
-        applicantFatherAge: this.fAge,
-        applicantFatherIsbeliving: this.radio6,
-        applicantFatherDieTime: this.dieTime1,
-        // 2.母亲
-        applicantMotherName: this.mName,
-        applicantMotherAge: this.mAge,
-        applicantMotherIsbeliving: this.radio7,
-        applicantMotherDieTime: this.dieTime2,
-        //3.继父
-        applicantHaveStepfather: this.radio8,
-        applicantStepfatherName: this.stepFatherName,
-        applicantStepfatherAge: this.stepFatherAge,
-        applicantStepfatherIsbeliving: this.radio9,
-        applicantStepfatherDieTime: this.dieTime3,
-        //4.养母
-        applicantHaveStepmother: this.radio10,
-        applicantStepmotherName: this.stepmotherName,
-        applicantStepmotherAge: this.stepmotherAge,
-        applicantStepmotherIsbeliving: this.radio11,
-        applicantStepmotherDieTime: this.dieTime4,
-        //  子女状况
-        applicantChildrenNumber: this.childNum,
-        applicantChildrenIshavedie: this.radio13,
-        applicantChildrenSongyang: this.radio12,
-        applicantChildrenDietime: this.dieChildTime,
-        //其他情况
-        applicantChildrenIsknowmakewill: this.radio14,
-        applicantSpouseAllmakewill: this.radio15,
-        applicantSpouseName: this.loveName,
-        applicantSpouseIdnumber: this.idCard,
-        applicantPropertys: this.checkList,
-        applicantOtherProperty: this.other,
-        tBeneficiaries: this.info,
-        userPhone: JSON.parse(localStorage.getItem("userInfo")).phone,
-      };
-      editInfo(info).then((res) => {
-        if (res.msg == "操作成功") {
-          localStorage.setItem("info", JSON.stringify(info));
+        let info = {
+          applicantId: this.$route.query.formId,
+          // 基本情况
+          applicantBasicName: this.applicantName,
+          applicantBasicSex:
+            this.value == "男" ? "0" : this.value == "女" ? "1" : "",
+          applicantBasicNationality: this.value2,
+          applicantBasicIsdualnationality:
+            this.value3 == "是" ? "0" : this.value3 == "否" ? "1" : "",
+          applicantBasicIdtype: this.certificateType
+            .map((sitem) => sitem)
+            .indexOf(this.value4),
+          // 是否为双重国籍
+          applicantBasicNationality2: this.secondNation,
+          applicantBasicIdnumber: this.certificateNumber,
+          // 户籍所在
+          applicantBasicPermanentprovince: this.provinceValue,
+          applicantBasicPermanentcity: this.cityValue,
+          applicantBasicPermanentcounty: this.RegionValue,
+          applicantBasicPermanentaddress: this.detailAdress,
+          //  现住址
+          applicantBasicCurrentprovince: this.provinceValue2,
+          applicantBasicCurrentcity: this.cityValue2,
+          applicantBasicCurrentcounty: this.RegionValue2,
+          applicantBasicCurrentaddress: this.detailAdress2,
+          applicantBasicCulturallevel: this.education
+            .map((sitem) => sitem)
+            .indexOf(this.value5),
+          applicantBasicPhone: this.phoneNumber,
+          applicantBasicEmail: this.email,
+          applicantBasicUnit: this.work,
+          // 身体状况
+          applicantPhysicalIssober: this.radio,
+          applicantPhysicalIsbraindiseases: this.radio3,
+          applicantPhysicalBraindiseasesexplain: this.disease,
+          applicantPhysicalIsalonenotarialoffice: this.radio2,
+          applicantPhysicalIsaloneaccept3hvideo: this.radio4,
+          applicantPhysicalReadorwrite: this.radio5,
+          // 目前婚姻状况
+          applicantMaritalStatus: this.marrige
+            .map((sitem) => sitem)
+            .indexOf(this.marrigeValue),
+          applicantMaritalNumber: this.marrigeNum,
+          applicantMaritalMarrytime: this.marrigeTime,
+          applicantMaritalRemarrytime: this.remarriedTime,
+          applicantMaritalWidowedtime: this.dieLoveTime,
+          applicantMaritalDivorcetime: this.divorceTime,
+          //  父母状况
+          // 1.父亲
+          applicantFatherName: this.fName,
+          applicantFatherAge: this.fAge,
+          applicantFatherIsbeliving: this.radio6,
+          applicantFatherDieTime: this.dieTime1,
+          // 2.母亲
+          applicantMotherName: this.mName,
+          applicantMotherAge: this.mAge,
+          applicantMotherIsbeliving: this.radio7,
+          applicantMotherDieTime: this.dieTime2,
+          //3.继父
+          applicantHaveStepfather: this.radio8,
+          applicantStepfatherName: this.stepFatherName,
+          applicantStepfatherAge: this.stepFatherAge,
+          applicantStepfatherIsbeliving: this.radio9,
+          applicantStepfatherDieTime: this.dieTime3,
+          //4.养母
+          applicantHaveStepmother: this.radio10,
+          applicantStepmotherName: this.stepmotherName,
+          applicantStepmotherAge: this.stepmotherAge,
+          applicantStepmotherIsbeliving: this.radio11,
+          applicantStepmotherDieTime: this.dieTime4,
+          //  子女状况
+          applicantChildrenNumber: this.childNum,
+          applicantChildrenIshavedie: this.radio13,
+          applicantChildrenSongyang: this.radio12,
+          applicantChildrenDietime: this.dieChildTime,
+          //其他情况
+          applicantChildrenIsknowmakewill: this.radio14,
+          applicantSpouseAllmakewill: this.radio15,
+          applicantSpouseName: this.loveName,
+          applicantSpouseIdnumber: this.idCard,
+          applicantPropertys: this.checkList,
+          applicantOtherProperty: this.other,
+          tBeneficiaries: this.info,
+          userPhone: JSON.parse(localStorage.getItem("userInfo")).phone,
+        };
+        editInfo(info).then((res) => {
+          if (res.msg == "操作成功") {
+            localStorage.setItem("info", JSON.stringify(info));
 
-          this.$message({
-            showClose: true,
-            message: "保存成功",
-            type: "success",
-            customClass: "mess",
-            offset: 200,
-          });
-          this.$router.push("/see");
-        }
-      });
+            this.$message({
+              showClose: true,
+              message: "保存成功",
+              type: "success",
+              customClass: "mess",
+              offset: 200,
+            });
+            this.$router.push("/see");
+          }
+        });
       }
     },
   },
@@ -1021,9 +1030,9 @@ export default {
     searchDetail(this.$route.query.formId).then((res) => {
       this.cont = res.data;
       // 基本情况
-      (this.applicantName = this.cont.applicantBasicName),
-        (this.value = this.sex[this.cont.applicantBasicSex]),
-        (this.value2 = this.cont.applicantBasicNationality);
+      this.applicantName = this.cont.applicantBasicName,
+        this.value = this.sex[this.cont.applicantBasicSex],
+        this.value2 = this.cont.applicantBasicNationality;
       this.value3 = this.DualNationality[
         this.cont.applicantBasicIsdualnationality
       ];
@@ -1092,7 +1101,7 @@ export default {
       this.radio15 = this.cont.applicantSpouseAllmakewill;
       this.loveName = this.cont.applicantSpouseName;
       this.idCard = this.cont.applicantSpouseIdnumber;
-      this.checkList = this.cont.applicantPropertys;
+      this.checkList = this.cont.applicantPropertys==null?[]:this.cont.applicantPropertys;
       this.other = this.cont.applicantOtherProperty;
       this.info = this.cont.tBeneficiaries;
     });
