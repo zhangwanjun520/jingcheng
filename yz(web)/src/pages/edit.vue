@@ -215,13 +215,13 @@
               <span class="star">*</span>
             </p>
           </div>
-          <div class="cont3">
+          <!-- <div class="cont3">
             <p>电子邮箱</p>
             <p>
               <el-input type="text" placeholder="请填写电子邮箱" v-model="email"></el-input>
               <span class="star">*</span>
             </p>
-          </div>
+          </div>-->
           <div class="cont3">
             <p>文化水平</p>
             <p>
@@ -266,7 +266,7 @@
 
             <div class="cont1">
               <p>
-                <span class="star">*</span> 能否独立来公证处：
+                <span class="star">*</span> 能否独立来公证处:
                 <el-radio v-model="radio2" label="Y">能</el-radio>
                 <el-radio v-model="radio2" label="N">否</el-radio>
               </p>
@@ -274,7 +274,7 @@
 
             <div class="cont1">
               <p id="disease">
-                <span class="star">*</span> 有无大脑疾病：
+                <span class="star">*</span> 有无大脑疾病:
                 <el-radio v-model="radio3" label="N">无</el-radio>
                 <el-radio v-model="radio3" label="Y">有</el-radio>
                 <el-input type="text" placeholder="请填写" v-model="disease"></el-input>
@@ -293,7 +293,7 @@
 
             <div class="cont1">
               <p>
-                <span class="star">*</span> 能否读写：
+                <span class="star">*</span> 能否读写:
                 <el-radio v-model="radio5" label="Y">能</el-radio>
                 <el-radio v-model="radio5" label="N">否</el-radio>
               </p>
@@ -392,6 +392,7 @@
                   v-model="marrigeNum"
                   label="有几次婚姻"
                   style="width:100px"
+                  :disabled="flag2"
                 ></el-input>
               </p>
             </div>
@@ -425,7 +426,7 @@
             </div>
             <div class="cont1">
               <p style="margin-top:30px">
-                在世情况：
+                在世情况:
                 <el-radio v-model="radio6" label="Y">在世</el-radio>
                 <el-radio v-model="radio6" label="N">去世</el-radio>
               </p>
@@ -462,7 +463,7 @@
             </div>
             <div class="cont1">
               <p style="margin-top:30px">
-                在世情况：
+                在世情况:
                 <el-radio v-model="radio7" label="Y">在世</el-radio>
                 <el-radio v-model="radio7" label="N">去世</el-radio>
               </p>
@@ -480,7 +481,7 @@
           <div class="cont">
             <div class="cont1">
               <p style="margin-top:30px;">
-                有无养父/继父：
+                有无养父/继父:
                 <el-radio v-model="radio8" label="N">无</el-radio>
                 <el-radio v-model="radio8" label="Y">有</el-radio>
               </p>
@@ -501,7 +502,7 @@
             </div>
             <div class="cont1">
               <p style="margin-top:30px">
-                在世情况：
+                在世情况:
                 <el-radio v-model="radio9" label="Y">在世</el-radio>
                 <el-radio v-model="radio9" label="N">去世</el-radio>
               </p>
@@ -518,7 +519,7 @@
           <div class="cont">
             <div class="cont1">
               <p style="margin-top:30px;">
-                有无养父/继母：
+                有无养父/继母:
                 <el-radio v-model="radio10" label="N">无</el-radio>
                 <el-radio v-model="radio10" label="Y">有</el-radio>
               </p>
@@ -539,7 +540,7 @@
             </div>
             <div class="cont1">
               <p style="margin-top:30px">
-                在世情况：
+                在世情况:
                 <el-radio v-model="radio11" label="Y">在世</el-radio>
                 <el-radio v-model="radio11" label="N">去世</el-radio>
               </p>
@@ -569,12 +570,12 @@
               <p id="dieTime2">
                 <span>子女人数:</span>
                 <el-input type="text" placeholder v-model="childNum"></el-input>
-                <span style="font-size:12px;">（包括：生子女、养子女、形成扶养关系的继子女等）</span>
+                <span style="font-size:12px;">（包括:生子女、养子女、形成扶养关系的继子女等）</span>
               </p>
             </div>
             <div class="cont1" style="width:400px">
               <p style="margin-top:25px">
-                有无送养子女：
+                有无送养子女:
                 <el-radio v-model="radio12" label="N">无</el-radio>
                 <el-radio v-model="radio12" label="Y">有</el-radio>
               </p>
@@ -583,7 +584,7 @@
           <div class="cont">
             <div class="cont1">
               <p style="margin-top:25px">
-                有无去世子女：
+                有无去世子女:
                 <el-radio v-model="radio13" label="N">无</el-radio>
                 <el-radio v-model="radio13" label="Y">有</el-radio>
               </p>
@@ -610,7 +611,7 @@
           <div class="cont">
             <div class="cont1">
               <p style="margin-top:25px">
-                子女是否知道订立遗嘱：
+                子女是否知道订立遗嘱:
                 <el-radio v-model="radio14" label="Y">是</el-radio>
                 <el-radio v-model="radio14" label="N">否</el-radio>
                 <el-radio v-model="radio14" label="O">部分知道</el-radio>
@@ -620,7 +621,7 @@
           <div class="cont">
             <div class="cont1">
               <p style="margin-top:25px">
-                夫妻双方是否均订立遗嘱：
+                夫妻双方是否均订立遗嘱:
                 <el-radio v-model="radio15" label="Y">是</el-radio>
                 <el-radio v-model="radio15" label="N">否</el-radio>
               </p>
@@ -642,7 +643,7 @@
           <div class="cont">
             <div class="cont1">
               <p style="margin-top:25px" id="marrige">
-                <span class="star">*</span> 财产情况（可多选）：
+                <span class="star">*</span> 财产情况（可多选）:
                 <el-checkbox-group v-model="checkList" style="display:inline-block">
                   <el-checkbox label="1">房产</el-checkbox>
                   <el-checkbox label="2">车辆</el-checkbox>
@@ -654,7 +655,22 @@
               </p>
             </div>
           </div>
+          <!-- -----------------------华丽的分割线 -->
 
+          <div class="cont">
+            <div class="cont1">
+              <!-- <p>详细地址</p> -->
+              <p id="marrige">
+                <span>有几个受益人:</span>
+                <el-input
+                  type="text"
+                  placeholder="请填写受益人人数（数字）"
+                  v-model="shouyiren"
+                  style="width:100px"
+                ></el-input>
+              </p>
+            </div>
+          </div>
           <div class="cont" v-for="item in info" :key="item.id">
             <div class="cont1">
               <p id="dieTime2">
@@ -671,12 +687,13 @@
             <div class="cont1" style="width:400px"></div>
           </div>
           <div class="cont2">
-            <div class="add" @click="addBeneficiary">添加受益人</div>
+            <div class="add" @click="addBeneficiary">确定</div>
           </div>
         </div>
       </div>
       <!-- 提交 -->
       <div class="submit" @click="editinfo">保存</div>
+
     </div>
   </div>
 </template>
@@ -705,6 +722,7 @@ export default {
       cur: "-1",
       showNation: "-1",
       flag: false,
+      flag2: false,
       // input框得v-model绑定值
       applicantName: "",
       certificateNumber: "",
@@ -824,6 +842,7 @@ export default {
       loveName: "",
       idCard: "",
       other: "",
+      shouyiren: "",
       info: [
         {
           beneficiary: "",
@@ -833,21 +852,27 @@ export default {
     };
   },
   methods: {
-        changeMarriageStatus(ite, index) {
-            this.cur = index;
-            this.marrigeTime = '';
-        this.remarriedTime = '';
-        this.divorceTime ='';
-        this.dieLoveTime = '';
-      // console.log( this.marrigeTime ,
-      //   this.remarriedTime ,
-      //   this.divorceTime ,
-      //   this.dieLoveTime )
+    // 婚姻状态数据一开始点击事件时先清零，避免混乱
+    changeMarriageStatus(ite, index) {
+      this.cur = index;
+      this.marrigeTime = "";
+      this.remarriedTime = "";
+      this.divorceTime = "";
+      this.dieLoveTime = "";
+      if (index == 1) {
+        // 未婚禁填婚姻次数
+        this.flag2 = true;
+        this.marrigeNum = "";
+      } else {
+        // 其他婚姻清空婚姻次数可填
+        this.flag2 = false;
+      }
     },
     llll(ind) {
-      console.log(ind);
+      // console.log(ind);
       this.showNation = ind;
     },
+    // 获取省市区
     getP(id) {
       getCity(id).then((res) => {
         this.cityarr = res.rows;
@@ -869,13 +894,26 @@ export default {
         this.regionarr2 = res.rows;
       });
     },
+    // 受益人
     addBeneficiary() {
-      this.info.push({
-        beneficiary: "",
-        relation: "",
-      });
+      // console.log(this.shouyiren)
+      this.info = [
+        {
+          beneficiary: "",
+          relation: "",
+        },
+      ];
+      for (var i = 0; i < this.shouyiren - 1; i++) {
+        this.info.push({
+          beneficiary: "",
+          relation: "",
+        });
+      }
+      console.log(this.info);
     },
+    // 修改接口
     editinfo() {
+      // 必填项
       if (
         this.applicantName == "" ||
         this.value == "" ||
@@ -890,7 +928,6 @@ export default {
         this.cityValue2 == "" ||
         this.RegionValue2 == "" ||
         this.phoneNumber == "" ||
-        this.email == "" ||
         this.value5 == "" ||
         this.work == "" ||
         this.radio == "" ||
@@ -989,13 +1026,13 @@ export default {
           applicantSpouseIdnumber: this.idCard,
           applicantPropertys: this.checkList,
           applicantOtherProperty: this.other,
+          applicantBeneficiaryNumber: this.shouyiren,
           tBeneficiaries: this.info,
           userPhone: JSON.parse(localStorage.getItem("userInfo")).phone,
         };
         editInfo(info).then((res) => {
           if (res.msg == "操作成功") {
             localStorage.setItem("info", JSON.stringify(info));
-
             this.$message({
               showClose: true,
               message: "保存成功",
@@ -1020,19 +1057,20 @@ export default {
   },
 
   created() {
+    // 获取省
     getProvince().then((res) => {
       this.province = res.rows;
       this.province2 = res.rows;
 
       console.log(this.provincearr);
     });
-
+    // 获取数据并赋值，将之前得数据展示出来
     searchDetail(this.$route.query.formId).then((res) => {
       this.cont = res.data;
       // 基本情况
-      this.applicantName = this.cont.applicantBasicName,
-        this.value = this.sex[this.cont.applicantBasicSex],
-        this.value2 = this.cont.applicantBasicNationality;
+      (this.applicantName = this.cont.applicantBasicName),
+        (this.value = this.sex[this.cont.applicantBasicSex]),
+        (this.value2 = this.cont.applicantBasicNationality);
       this.value3 = this.DualNationality[
         this.cont.applicantBasicIsdualnationality
       ];
@@ -1101,9 +1139,21 @@ export default {
       this.radio15 = this.cont.applicantSpouseAllmakewill;
       this.loveName = this.cont.applicantSpouseName;
       this.idCard = this.cont.applicantSpouseIdnumber;
-      this.checkList = this.cont.applicantPropertys==null?[]:this.cont.applicantPropertys;
+      this.checkList =
+        this.cont.applicantPropertys == null
+          ? []
+          : this.cont.applicantPropertys;
       this.other = this.cont.applicantOtherProperty;
+      this.shouyiren = this.cont.applicantBeneficiaryNumber;
       this.info = this.cont.tBeneficiaries;
+      console.log(this.marrigeValue);
+      // 未婚禁填婚姻次数
+      if (this.marrigeValue == "未婚") {
+        this.flag2 = true;
+        this.marrigeNum=''
+      } else {
+        this.flag2 = false;
+      }
     });
   },
 };
@@ -1199,17 +1249,17 @@ export default {
   // padding-top: 5px;
 }
 .add {
-  width: 200px;
-  height: 50px;
+  width: 100px;
+  height: 40px;
   text-align: center;
-  line-height: 50px;
+  line-height: 40px;
   background-color: #6a2f73;
   color: white;
 }
 .cont2 {
   position: absolute;
   top: 230px;
-  right: 0px;
+  left: 400px;
 }
 .submit {
   width: 300px;

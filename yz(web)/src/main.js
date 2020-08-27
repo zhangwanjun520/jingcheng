@@ -16,6 +16,8 @@ Vue.use(VueAwesomeSwiper)
 Vue.use(ElementUI);
 Vue.use(Radio,Input,Button,Icon,Message,Loading,Form,FormItem,DatePicker,Checkbox);
 // axios.defaults.withCredentials = true
+require('es6-promise').polyfill();
+require('es6-promise/auto');
 Vue.prototype.$axios=axios
 
 router.afterEach(() => {

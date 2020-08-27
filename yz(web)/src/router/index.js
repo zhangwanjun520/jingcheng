@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Cookies from 'js-cookie'
+// import Cookies from 'js-cookie'
+import {_local} from '../api/storage'
 
 Vue.use(VueRouter)
 const routerPush = VueRouter.prototype.push
@@ -35,6 +36,7 @@ const routes = [
     name: 'about',
     component: () => import('../pages/edit.vue'),
     meta:{
+      //登录权限即有token值才可进入
       requireAuth:true
     }
   },
@@ -57,7 +59,7 @@ router.beforeEach((to, from, next) => {
 // console.log(to)
 
   if (to.matched.some(r => r.meta.requireAuth)) {  // 判断该路由是否需要登录权限
-    if (Cookies.get('user')&&Cookies.get('user') != null ) {  // 通过vuex state获取当前的token是否存在
+    if (_local.get('token')&&_local.get('token') != null ) {  // 通过封装_local获取当前的token是否存在
       next();
     }
     else {
@@ -65,6 +67,7 @@ router.beforeEach((to, from, next) => {
         path: '/login',
         query: {redirect: to.fullPath}  // 将跳转的路由path作为参数，登录成功后跳转到该路由
       })
+
     }
   }
   else {

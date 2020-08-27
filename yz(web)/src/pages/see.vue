@@ -2,11 +2,11 @@
   <div class="box">
     <div class="formHead">
       <span
-        :style="{'color':(cur==0?'#6a2b73':''),'border-bottom':(cur==0?'3px solid #6a2b73':'')}"
+        :style="{'color':(cur==0?'#6a2b73':''),'border-bottom':(cur==0?'6px solid #6a2b73':'')}"
         @click="cur=0"
       >待提交</span>
       <span
-        :style="{'color':(cur==1?'#6a2b73':''),'border-bottom':(cur==1?'3px solid #6a2b73':'')}"
+        :style="{'color':(cur==1?'#6a2b73':''),'border-bottom':(cur==1?'6px solid #6a2b73':'')}"
         @click="submited"
       >已提交</span>
     </div>
@@ -29,43 +29,44 @@
                 <p>申请人姓名：{{item.applicantBasicName}}</p>
               </div>
               <div class="cont1">
-                <p>性别:{{sex[item.applicantBasicSex]}}</p>
+                <p>性别：{{sex[item.applicantBasicSex]}}</p>
               </div>
 
               <div class="cont1">
-                <p>国籍:{{item.applicantBasicNationality}}</p>
+                <p>国籍：{{item.applicantBasicNationality}}</p>
               </div>
             </div>
             <!-- ===============华丽得分割线 2-->
             <div class="cont">
               <div class="cont1">
-                <p>是否双重国籍:{{nation[item.applicantBasicIsdualnationality]}}</p>
+                <p>是否双重国籍：{{nation[item.applicantBasicIsdualnationality]}}</p>
               </div>
               <div class="cont1" v-if="nation[item.applicantBasicIsdualnationality]=='是'">
                 <p>第二国籍：{{item.applicantBasicNationality2}}</p>
               </div>
 
               <div class="cont1">
-                <p>证件类型:{{certificateType[item.applicantBasicIdtype]}}</p>
+                <p>证件类型：{{certificateType[item.applicantBasicIdtype]}}</p>
               </div>
               <div class="cont1">
-                <p>证件号码:{{item.applicantBasicIdnumber}}</p>
+                <p>证件号码：{{item.applicantBasicIdnumber}}</p>
               </div>
             </div>
 
             <!-- ===============华丽得分割线 2-->
             <div class="cont">
-              <div class="cont1" style="width:700px">
+              <div class="cont1" style="width:980px" >
                 <p>
-                  户籍地址:{{item.applicantBasicPermanentprovince}}&nbsp;&nbsp;
+                  户籍地址：{{item.applicantBasicPermanentprovince}}&nbsp;&nbsp;
                   {{item.applicantBasicPermanentcity}}&nbsp;&nbsp;
                   {{item.applicantBasicPermanentcounty}}&nbsp;&nbsp;
                   {{item.applicantBasicPermanentaddress}}&nbsp;&nbsp;
                 </p>
               </div>
+
             </div>
             <div class="cont">
-              <div class="cont1" style="width:700px">
+                      <div class="cont1" style="width:980px">
                 <p>
                   现住址:
                   {{item.applicantBasicCurrentprovince}} &nbsp;&nbsp;
@@ -73,31 +74,30 @@
                   {{item.applicantBasicCurrentcounty}}&nbsp;&nbsp;
                   {{item.applicantBasicCurrentaddress}}
                 </p>
-                <p></p>
+
               </div>
             </div>
+
 
             <!-- ===============华丽得分割线 5-->
 
             <!-- ===============华丽得分割线 6-->
             <div class="cont">
               <div class="cont1">
-                <p>文化水平:{{education[item.applicantBasicCulturallevel]}}</p>
+                <p>文化水平：{{education[item.applicantBasicCulturallevel]}}</p>
               </div>
               <div class="cont1">
-                <p>手机号码:{{item.applicantBasicPhone}}</p>
+                <p>手机号码：{{item.applicantBasicPhone}}</p>
               </div>
-              <div class="cont1">
-                <p>电子邮箱:{{item.applicantBasicEmail}}</p>
+             <div class="cont1">
+                <p>现任职单位/退休前单位：{{item.applicantBasicUnit}}</p>
               </div>
             </div>
 
             <!-- ===============华丽得分割线 7-->
-            <div class="cont">
-              <div class="cont1">
-                <p>现任职单位/退休前单位:{{item.applicantBasicUnit}}</p>
-              </div>
-            </div>
+            <!-- <div class="cont">
+
+            </div> -->
           </div>
         </div>
         <!-- 身体状况 -->
@@ -109,7 +109,7 @@
           <div class="min-con">
             <div class="cont">
               <div class="cont1">
-                <p>神智是否清楚:{{item.applicantPhysicalIssober=='Y'?'是':item.applicantPhysicalIssober=='N'?'否':''}}</p>
+                <p>神智是否清楚：{{item.applicantPhysicalIssober=='Y'?'是':item.applicantPhysicalIssober=='N'?'否':''}}</p>
               </div>
 
               <div class="cont1">
@@ -123,7 +123,7 @@
             <!-- -----------------------华丽的分割线 -->
             <div class="cont">
               <div class="cont1">
-                <p>能否独立接受三小时录像:{{item.applicantPhysicalIsaloneaccept3hvideo=='Y'?'能':item.applicantPhysicalIsaloneaccept3hvideo=='N'?'否':''}}</p>
+                <p>能否独立接受三小时录像：{{item.applicantPhysicalIsaloneaccept3hvideo=='Y'?'能':item.applicantPhysicalIsaloneaccept3hvideo=='N'?'否':''}}</p>
               </div>
 
               <div class="cont1">
@@ -147,29 +147,29 @@
           </div>
           <div class="min-con">
             <div class="cont">
-              <div class="cont1">目前婚姻状况:{{marrige[item.applicantMaritalStatus]}}</div>
+              <div class="cont1">目前婚姻状况：{{marrige[item.applicantMaritalStatus]}}</div>
               <div
                 class="cont1"
                 style="margin-left:20px"
                 v-if="item.applicantMaritalMarrytime!=null"
-              >结婚时间:{{item.applicantMaritalMarrytime}}</div>
+              >结婚时间：{{item.applicantMaritalMarrytime}}</div>
               <!-- ========= -->
               <div
                 class="cont1"
                 style="margin-left:20px"
                 v-if="item.applicantMaritalDivorcetime!=null"
-              >离婚时间:{{item.applicantMaritalDivorcetime}}</div>
+              >离婚时间：{{item.applicantMaritalDivorcetime}}</div>
               <div
                 class="cont1"
                 style="margin-left:20px"
                 v-if="item.applicantMaritalRemarrytime!=null"
-              >再婚时间:{{item.applicantMaritalRemarrytime}}</div>
+              >再婚时间：{{item.applicantMaritalRemarrytime}}</div>
               <!-- ============ -->
               <div
                 class="cont1"
                 style="margin-left:20px"
                 v-if="item.applicantMaritalWidowedtime!=null"
-              >丧偶时间:{{item.applicantMaritalWidowedtime}}</div>
+              >丧偶时间：{{item.applicantMaritalWidowedtime}}</div>
             </div>
 
             <!-- -----------------------华丽的分割线 -->
@@ -177,7 +177,7 @@
               <div class="cont1">
                 <!-- <p>详细地址</p> -->
                 <p>
-                  <span>有几次婚姻:{{item.applicantMaritalNumber}}</span>
+                  <span>有几次婚姻：{{marrige[item.applicantMaritalStatus]=='未婚'?'':item.applicantMaritalNumber}}</span>
                 </p>
               </div>
             </div>
@@ -194,20 +194,20 @@
               <div class="cont1" style="width:245px">
                 <!-- <p>详细地址</p> -->
                 <p>
-                  <span>父亲（姓名）:{{item.applicantFatherName}}</span>
+                  <span>父亲(姓名)：{{item.applicantFatherName}}</span>
                 </p>
               </div>
               <div class="cont1" style="width:245px">
                 <!-- <p>详细地址</p> -->
                 <p>
-                  <span>年龄:{{item.applicantFatherAge}}</span>
+                  <span>年龄：{{item.applicantFatherAge}}</span>
                 </p>
               </div>
               <div class="cont1" style="width:245px">
                 <p>在世情况：{{item.applicantFatherIsbeliving=='Y'?'在世':item.applicantFatherIsbeliving=='N'?'去世':''}}</p>
               </div>
               <div class="cont1" style="width:245px">
-                <p>去世时间:{{item.applicantFatherDieTime}}</p>
+                <p>去世时间：{{item.applicantFatherDieTime}}</p>
               </div>
             </div>
             <!-- -----------------------华丽的分割线母亲状况 -->
@@ -216,20 +216,20 @@
               <div class="cont1" style="width:245px">
                 <!-- <p>详细地址</p> -->
                 <p>
-                  <span>母亲（姓名）:{{item.applicantMotherName}}</span>
+                  <span>母亲(姓名)：{{item.applicantMotherName}}</span>
                 </p>
               </div>
               <div class="cont1" style="width:245px">
                 <!-- <p>详细地址</p> -->
                 <p>
-                  <span>年龄:{{item.applicantMotherAge}}</span>
+                  <span>年龄：{{item.applicantMotherAge}}</span>
                 </p>
               </div>
               <div class="cont1" style="width:245px">
                 <p>在世情况：{{item.applicantMotherIsbeliving=='Y'?'在世':item.applicantMotherIsbeliving=='N'?'去世':''}}</p>
               </div>
               <div class="cont1" style="width:245px">
-                <p>去世时间:{{item.applicantMotherDieTime}}</p>
+                <p>去世时间：{{item.applicantMotherDieTime}}</p>
               </div>
             </div>
             <!-- -----------------------华丽的分割线养父状况 -->
@@ -241,13 +241,13 @@
               <div class="cont1" style="width:200px">
                 <!-- <p>详细地址</p> -->
                 <p>
-                  <span>姓名:{{item.applicantStepfatherName}}</span>
+                  <span>姓名：{{item.applicantStepfatherName}}</span>
                 </p>
               </div>
               <div class="cont1" style="width:200px">
                 <!-- <p>详细地址</p> -->
                 <p>
-                  <span>年龄:{{item.applicantStepfatherAge}}</span>
+                  <span>年龄：{{item.applicantStepfatherAge}}</span>
                 </p>
               </div>
               <div class="cont1" style="width:200px">
@@ -266,13 +266,13 @@
               <div class="cont1" style="width:200px">
                 <!-- <p>详细地址</p> -->
                 <p>
-                  <span>姓名:{{item.applicantStepmotherName}}</span>
+                  <span>姓名：{{item.applicantStepmotherName}}</span>
                 </p>
               </div>
               <div class="cont1" style="width:200px">
                 <!-- <p>详细地址</p> -->
                 <p>
-                  <span>年龄:{{item.applicantStepmotherAge}}</span>
+                  <span>年龄：{{item.applicantStepmotherAge}}</span>
                 </p>
               </div>
               <div class="cont1" style="width:200px">
@@ -295,7 +295,7 @@
               <div class="cont1">
                 <!-- <p>详细地址</p> -->
                 <p>
-                  <span>子女人数:{{item.applicantChildrenNumber}}</span>
+                  <span>子女人数：{{item.applicantChildrenNumber}}</span>
                 </p>
               </div>
               <div class="cont1" style="width:400px">
@@ -307,7 +307,7 @@
                 <p>有无去世子女：{{item.applicantChildrenIshavedie=='Y'?'有':item.applicantChildrenIshavedie=='N'?'无':''}}</p>
               </div>
               <div class="cont1">
-                <p>去世时间:{{item.applicantChildrenDietime}}</p>
+                <p>去世时间：{{item.applicantChildrenDietime}}</p>
               </div>
             </div>
           </div>
@@ -330,12 +330,12 @@
               </div>
               <div class="cont1">
                 <p>
-                  <span>配偶姓名:{{item.applicantSpouseName}}</span>
+                  <span>配偶姓名：{{item.applicantSpouseName}}</span>
                 </p>
               </div>
               <div class="cont1">
                 <p>
-                  <span>身份证号:{{item.applicantSpouseIdnumber}}</span>
+                  <span>身份证号：{{item.applicantSpouseIdnumber}}</span>
                 </p>
               </div>
             </div>
@@ -343,26 +343,32 @@
             <div class="cont">
               <div class="cont1" style="width:1000px">
                 <p>
-                  财产情况（可多选）：
+                  财产情况：
                   <span
                     v-for="sitem in item.applicantPropertys"
                     :key="sitem.id"
                     id="caichan"
                   >{{property[sitem-1]}}</span>
-                  {{item.applicantOtherProperty}}
+                   {{item.applicantOtherProperty}}
                 </p>
               </div>
             </div>
-
+     <div class="cont" >
+              <div class="cont1">
+                <p>
+                  <span>受益人人数：{{item.applicantBeneficiaryNumber}}</span>
+                </p>
+              </div>
+            </div>
             <div class="cont" v-for="titem in item.tBeneficiaries" :key="titem.id">
               <div class="cont1">
                 <p>
-                  <span>受益人姓名:{{titem.beneficiary}}</span>
+                  <span>受益人姓名：{{titem.beneficiary}}</span>
                 </p>
               </div>
               <div class="cont1">
                 <p>
-                  <span>与遗嘱人关系:{{titem.relation}}</span>
+                  <span>与遗嘱人关系：{{titem.relation}}</span>
                 </p>
               </div>
             </div>
@@ -393,17 +399,17 @@
                 <p>申请人姓名：{{item.applicantBasicName}}</p>
               </div>
               <div class="cont1">
-                <p>性别:{{sex[item.applicantBasicSex]}}</p>
+                <p>性别：{{sex[item.applicantBasicSex]}}</p>
               </div>
 
               <div class="cont1">
-                <p>国籍:{{item.applicantBasicNationality}}</p>
+                <p>国籍：{{item.applicantBasicNationality}}</p>
               </div>
             </div>
             <!-- ===============华丽得分割线 2-->
             <div class="cont">
               <div class="cont1">
-                <p>是否双重国籍:{{nation[item.applicantBasicIsdualnationality]}}</p>
+                <p>是否双重国籍：{{nation[item.applicantBasicIsdualnationality]}}</p>
               </div>
               <div
                 class="cont1"
@@ -413,26 +419,27 @@
               </div>
 
               <div class="cont1">
-                <p>证件类型:{{certificateType[item.applicantBasicIdtype]}}</p>
+                <p>证件类型：{{certificateType[item.applicantBasicIdtype]}}</p>
               </div>
               <div class="cont1">
-                <p>证件号码:{{item.applicantBasicIdnumber}}</p>
+                <p>证件号码：{{item.applicantBasicIdnumber}}</p>
               </div>
             </div>
 
             <!-- ===============华丽得分割线 2-->
             <div class="cont">
-              <div class="cont1" style="width:700px">
+              <div class="cont1" style="width:980px" >
                 <p>
-                  户籍地址:{{item.applicantBasicPermanentprovince}}&nbsp;&nbsp;
+                  户籍地址：{{item.applicantBasicPermanentprovince}}&nbsp;&nbsp;
                   {{item.applicantBasicPermanentcity}}&nbsp;&nbsp;
                   {{item.applicantBasicPermanentcounty}}&nbsp;&nbsp;
                   {{item.applicantBasicPermanentaddress}}&nbsp;&nbsp;
                 </p>
               </div>
+
             </div>
             <div class="cont">
-              <div class="cont1" style="width:700px">
+                      <div class="cont1" style="width:980px">
                 <p>
                   现住址:
                   {{item.applicantBasicCurrentprovince}} &nbsp;&nbsp;
@@ -440,31 +447,30 @@
                   {{item.applicantBasicCurrentcounty}}&nbsp;&nbsp;
                   {{item.applicantBasicCurrentaddress}}
                 </p>
-                <p></p>
+
               </div>
             </div>
+
 
             <!-- ===============华丽得分割线 5-->
 
             <!-- ===============华丽得分割线 6-->
             <div class="cont">
               <div class="cont1">
-                <p>文化水平:{{education[item.applicantBasicCulturallevel]}}</p>
+                <p>文化水平：{{education[item.applicantBasicCulturallevel]}}</p>
               </div>
               <div class="cont1">
-                <p>手机号码:{{item.applicantBasicPhone}}</p>
+                <p>手机号码：{{item.applicantBasicPhone}}</p>
               </div>
+              <!-- <div class="cont1">
+                <p>电子邮箱：{{item.applicantBasicEmail}}</p>
+              </div> -->
               <div class="cont1">
-                <p>电子邮箱:{{item.applicantBasicEmail}}</p>
+                <p>现任职单位/退休前单位：{{item.applicantBasicUnit}}</p>
               </div>
             </div>
 
-            <!-- ===============华丽得分割线 7-->
-            <div class="cont">
-              <div class="cont1">
-                <p>现任职单位/退休前单位:{{item.applicantBasicUnit}}</p>
-              </div>
-            </div>
+
           </div>
         </div>
         <!-- 身体状况 -->
@@ -476,7 +482,7 @@
           <div class="min-con">
             <div class="cont">
               <div class="cont1">
-                <p>神智是否清楚:{{item.applicantPhysicalIssober=='Y'?'是':item.applicantPhysicalIssober=='N'?'否':''}}</p>
+                <p>神智是否清楚：{{item.applicantPhysicalIssober=='Y'?'是':item.applicantPhysicalIssober=='N'?'否':''}}</p>
               </div>
 
               <div class="cont1">
@@ -490,7 +496,7 @@
             <!-- -----------------------华丽的分割线 -->
             <div class="cont">
               <div class="cont1">
-                <p>能否独立接受三小时录像:{{item.applicantPhysicalIsaloneaccept3hvideo=='Y'?'能':item.applicantPhysicalIsaloneaccept3hvideo=='N'?'否':''}}</p>
+                <p>能否独立接受三小时录像：{{item.applicantPhysicalIsaloneaccept3hvideo=='Y'?'能':item.applicantPhysicalIsaloneaccept3hvideo=='N'?'否':''}}</p>
               </div>
 
               <div class="cont1">
@@ -514,29 +520,29 @@
           </div>
           <div class="min-con">
             <div class="cont">
-              <div class="cont1">目前婚姻状况:{{marrige[item.applicantMaritalStatus]}}</div>
+              <div class="cont1">目前婚姻状况：{{marrige[item.applicantMaritalStatus]}}</div>
               <div
                 class="cont1"
                 style="margin-left:20px"
                 v-if="item.applicantMaritalMarrytime!=null"
-              >结婚时间:{{item.applicantMaritalMarrytime}}</div>
+              >结婚时间：{{item.applicantMaritalMarrytime}}</div>
               <!-- ========= -->
               <div
                 class="cont1"
                 style="margin-left:20px"
                 v-if="item.applicantMaritalDivorcetime!=null"
-              >离婚时间:{{item.applicantMaritalDivorcetime}}</div>
+              >离婚时间：{{item.applicantMaritalDivorcetime}}</div>
               <div
                 class="cont1"
                 style="margin-left:20px"
                 v-if="item.applicantMaritalRemarrytime!=null"
-              >再婚时间:{{item.applicantMaritalRemarrytime}}</div>
+              >再婚时间：{{item.applicantMaritalRemarrytime}}</div>
               <!-- ============ -->
               <div
                 class="cont1"
                 style="margin-left:20px"
                 v-if="item.applicantMaritalWidowedtime!=null"
-              >丧偶时间:{{item.applicantMaritalWidowedtime}}</div>
+              >丧偶时间：{{item.applicantMaritalWidowedtime}}</div>
             </div>
 
             <!-- -----------------------华丽的分割线 -->
@@ -544,7 +550,7 @@
               <div class="cont1">
                 <!-- <p>详细地址</p> -->
                 <p>
-                  <span>有几次婚姻:{{item.applicantMaritalNumber}}</span>
+                  <span>有几次婚姻：{{item.applicantMaritalNumber}}</span>
                 </p>
               </div>
             </div>
@@ -561,20 +567,20 @@
               <div class="cont1" style="width:245px">
                 <!-- <p>详细地址</p> -->
                 <p>
-                  <span>父亲（姓名）:{{item.applicantFatherName}}</span>
+                  <span>父亲（姓名）：{{item.applicantFatherName}}</span>
                 </p>
               </div>
               <div class="cont1" style="width:245px">
                 <!-- <p>详细地址</p> -->
                 <p>
-                  <span>年龄:{{item.applicantFatherAge}}</span>
+                  <span>年龄：{{item.applicantFatherAge}}</span>
                 </p>
               </div>
               <div class="cont1" style="width:245px">
                 <p>在世情况：{{item.applicantFatherIsbeliving=='Y'?'在世':item.applicantFatherIsbeliving=='N'?'去世':''}}</p>
               </div>
               <div class="cont1" style="width:245px">
-                <p>去世时间:{{item.applicantFatherDieTime}}</p>
+                <p>去世时间：{{item.applicantFatherDieTime}}</p>
               </div>
             </div>
             <!-- -----------------------华丽的分割线母亲状况 -->
@@ -583,20 +589,20 @@
               <div class="cont1" style="width:245px">
                 <!-- <p>详细地址</p> -->
                 <p>
-                  <span>母亲（姓名）:{{item.applicantMotherName}}</span>
+                  <span>母亲（姓名）：{{item.applicantMotherName}}</span>
                 </p>
               </div>
               <div class="cont1" style="width:245px">
                 <!-- <p>详细地址</p> -->
                 <p>
-                  <span>年龄:{{item.applicantMotherAge}}</span>
+                  <span>年龄：{{item.applicantMotherAge}}</span>
                 </p>
               </div>
               <div class="cont1" style="width:245px">
                 <p>在世情况：{{item.applicantMotherIsbeliving=='Y'?'在世':item.applicantMotherIsbeliving=='N'?'去世':''}}</p>
               </div>
               <div class="cont1" style="width:245px">
-                <p>去世时间:{{item.applicantMotherDieTime}}</p>
+                <p>去世时间：{{item.applicantMotherDieTime}}</p>
               </div>
             </div>
             <!-- -----------------------华丽的分割线养父状况 -->
@@ -608,13 +614,13 @@
               <div class="cont1" style="width:200px">
                 <!-- <p>详细地址</p> -->
                 <p>
-                  <span>姓名:{{item.applicantStepfatherName}}</span>
+                  <span>姓名：{{item.applicantStepfatherName}}</span>
                 </p>
               </div>
               <div class="cont1" style="width:200px">
                 <!-- <p>详细地址</p> -->
                 <p>
-                  <span>年龄:{{item.applicantStepfatherAge}}</span>
+                  <span>年龄：{{item.applicantStepfatherAge}}</span>
                 </p>
               </div>
               <div class="cont1" style="width:200px">
@@ -633,13 +639,13 @@
               <div class="cont1" style="width:200px">
                 <!-- <p>详细地址</p> -->
                 <p>
-                  <span>姓名:{{item.applicantStepmotherName}}</span>
+                  <span>姓名：{{item.applicantStepmotherName}}</span>
                 </p>
               </div>
               <div class="cont1" style="width:200px">
                 <!-- <p>详细地址</p> -->
                 <p>
-                  <span>年龄:{{item.applicantStepmotherAge}}</span>
+                  <span>年龄：{{item.applicantStepmotherAge}}</span>
                 </p>
               </div>
               <div class="cont1" style="width:200px">
@@ -662,7 +668,7 @@
               <div class="cont1">
                 <!-- <p>详细地址</p> -->
                 <p>
-                  <span>子女人数:{{item.applicantChildrenNumber}}</span>
+                  <span>子女人数：{{item.applicantChildrenNumber}}</span>
                 </p>
               </div>
               <div class="cont1" style="width:400px">
@@ -674,7 +680,7 @@
                 <p>有无去世子女：{{item.applicantChildrenIshavedie=='Y'?'有':item.applicantChildrenIshavedie=='N'?'无':''}}</p>
               </div>
               <div class="cont1">
-                <p>去世时间:{{item.applicantChildrenDietime}}</p>
+                <p>去世时间：{{item.applicantChildrenDietime}}</p>
               </div>
             </div>
           </div>
@@ -697,12 +703,12 @@
               </div>
               <div class="cont1">
                 <p>
-                  <span>配偶姓名:{{item.applicantSpouseName}}</span>
+                  <span>配偶姓名：{{item.applicantSpouseName}}</span>
                 </p>
               </div>
               <div class="cont1">
                 <p>
-                  <span>身份证号:{{item.applicantSpouseIdnumber}}</span>
+                  <span>身份证号：{{item.applicantSpouseIdnumber}}</span>
                 </p>
               </div>
             </div>
@@ -710,26 +716,32 @@
             <div class="cont">
               <div class="cont1" style="width:1000px">
                 <p>
-                  财产情况（可多选）：
+                  财产情况：
                   <span
                     v-for="sitem in item.applicantPropertys"
                     :key="sitem.id"
                     id="caichan"
                   >{{property[sitem-1]}}</span>
-                  {{item.applicantOtherProperty}}
+                 {{item.applicantOtherProperty}}
                 </p>
               </div>
             </div>
-
+             <div class="cont" >
+              <div class="cont1">
+                <p>
+                  <span>受益人人数：{{item.applicantBeneficiaryNumber}}</span>
+                </p>
+              </div>
+            </div>
             <div class="cont" v-for="titem in item.tBeneficiaries" :key="titem.id">
               <div class="cont1">
                 <p>
-                  <span>受益人姓名:{{titem.beneficiary}}</span>
+                  <span>受益人姓名：{{titem.beneficiary}}</span>
                 </p>
               </div>
               <div class="cont1">
                 <p>
-                  <span>与遗嘱人关系:{{titem.relation}}</span>
+                  <span>与遗嘱人关系：{{titem.relation}}</span>
                 </p>
               </div>
             </div>
@@ -783,13 +795,14 @@ export default {
     };
   },
   methods: {
+     // 待提交筛选数据
     search1() {
       this.info = JSON.parse(localStorage.getItem("userInfo"));
+      // console.log(this.info)
       let info2 = {
         applicantBasicPhone: this.info.phone,
         status: 4,
       };
-      // 待提交
       search(qs.stringify(info2)).then((res) => {
         this.content = res.rows;
       });
@@ -802,9 +815,9 @@ export default {
         },
       });
     },
+     // 已提交筛选收据
     submited() {
       this.cur = 1;
-      // 已提交
       let info3 = {
         applicantBasicPhone: this.info.phone,
         status: 1,
@@ -826,7 +839,7 @@ export default {
             customClass: "mess",
             offset: 200,
           });
-          this.search1();
+          this.submited()
         }
       });
     },
@@ -864,13 +877,13 @@ export default {
 
   span {
     display: inline-block;
-    width: 300px;
-    margin-left: 120px;
+    width: 250px;
+    margin-left: 180px;
     height: 70px;
     line-height: 70px;
     border-bottom: 3px solid gainsboro;
     text-align: center;
-    font-size: 30px;
+    font-size: 26px;
     cursor: pointer;
     color: #666666;
   }
@@ -932,11 +945,12 @@ export default {
         height: 50px;
 
         font-size: 14px;
+        // border: 1px solid;
 
         .cont1 {
           float: left;
-
           width: 320px;
+  //  border: 1px solid red;
         }
       }
     }
@@ -977,3 +991,8 @@ export default {
 //   width: 22px;
 // }
 </style>
+
+
+
+
+

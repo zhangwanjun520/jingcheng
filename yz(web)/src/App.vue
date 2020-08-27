@@ -1,21 +1,15 @@
 <template>
   <div id="app">
-    <!-- <Login></Login> -->
-    <!-- <Form></Form> -->
+
     <router-view></router-view>
 
   </div>
 </template>
 <script>
-import Login from "./pages/loginReg";
-// import Form from "./pages/form";
-
-
 
 export default {
   components: {
-     Login,
-  // Form
+
   },
   data() {
     return {
@@ -35,7 +29,7 @@ export default {
   //   };
   // },
 //   watch: {
-// // 解决ie浏览器缓存页面，样式混乱
+// //
 //     screenWidth() {
 //       this.$forceUpdate();
 //       console.log("宽度变化了");

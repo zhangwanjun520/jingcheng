@@ -1,6 +1,6 @@
 // 和推荐相关的接口处理
 import axios from '../utils/axios.js'
-let base = 'http://192.168.40.136:10010/api'
+let base = 'http://192.168.40.120:10010/api'
 // let base='http://localhost:8081/api'
 
 //注册
@@ -15,8 +15,6 @@ export const getCode2 = params => { return axios.get(`${base}/findPass/code?${pa
 // 获取图片验证码
 // 加时间戳防止ie浏览器缓存，验证码不更新
 export const getImageCode = params => { return axios.get(`${base}/captchaImage?time=${new Date().getTime()}`, params) }
-
-
 // 提交表单
 export const submitInformation = params => { return axios.post(`${base}/applicant/add`, params) }
 // 查询http://192.168.40.120:8081/api
@@ -25,7 +23,6 @@ export const search = params => { return axios.post(`${base}/applicant/list`, pa
 export const searchDetail = params => { return axios.get(`${base}/applicant/edit/${params}`, params) }
 
 // 获取省市区
-// http://192.168.40.120:8081/api
 
 export const getProvince = params => { return axios.get(`${base}/province`, params) }
 //市
@@ -45,4 +42,9 @@ export const submitNewInfo = params => { return axios.post(`${base}/user/resetPa
 
 export const submitLastInfo = params => { return axios.get(`${base}/applicant/submit/${params}`, params) }
 
-
+//
+// 手机验证码登录
+// export const getCode = params => { return axios.post(`${base}/phone/code`,  params ) }
+export const VerificationCode = params => { return axios.get(`${base}/login/VerificationCode?${params}`, params) }
+//
+export const codeLogin = params => { return axios.post(`${base}/user/VerificationCode/login `, params) }

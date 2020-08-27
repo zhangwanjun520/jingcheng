@@ -1,11 +1,8 @@
 import Vue from 'vue';
 
 import Vuex from 'vuex';
-
 import adressInfo from './modules/adressInfo';
 import news from './modules/news';
-
-
 import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex);
